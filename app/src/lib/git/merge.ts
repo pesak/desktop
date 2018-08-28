@@ -62,11 +62,11 @@ export async function mergeTree(
   }
 
   if (mergeBase === ours.tip.sha) {
-    return { kind: MergeResultKind.Success, entries: [] }
+    return { kind: MergeResultKind.Clean, entries: [] }
   }
 
   if (mergeBase === theirs.tip.sha) {
-    return { kind: MergeResultKind.Success, entries: [] }
+    return { kind: MergeResultKind.Clean, entries: [] }
   }
 
   console.time('mergeTree')
