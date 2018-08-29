@@ -26,6 +26,11 @@ phases:
           testRunner: 'JUnit'
           testResultsFiles: 'coverage/junit.xml'
           platform: Windows
+      - task: PublishCodeCoverageResults@1
+        displayName: Publish Code Coverage
+        inputs:
+          codeCoverageTool: 'cobertura'
+          summaryFileLocation: 'coverage/cobertura*.xml'
 
   - phase: Linux
     queue: Hosted Linux Preview
@@ -59,6 +64,11 @@ phases:
           testRunner: 'JUnit'
           testResultsFiles: 'coverage/junit.xml'
           platform: Linux
+      - task: PublishCodeCoverageResults@1
+        displayName: Publish Code Coverage
+        inputs:
+          codeCoverageTool: 'cobertura'
+          summaryFileLocation: 'coverage/cobertura*.xml'
 
   - phase: macOS
     queue: Hosted macOS Preview
@@ -84,3 +94,8 @@ phases:
           testRunner: 'JUnit'
           testResultsFiles: 'coverage/junit.xml'
           platform: macOS
+      - task: PublishCodeCoverageResults@1
+        displayName: Publish Code Coverage
+        inputs:
+          codeCoverageTool: 'cobertura'
+          summaryFileLocation: 'coverage/cobertura*.xml'
