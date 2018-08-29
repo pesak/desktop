@@ -20,6 +20,12 @@ phases:
       - script: |
           yarn test:setup && yarn test
         name: Test
+      - task: PublishTestResults@2
+        displayName: Publish Test Results
+        inputs:
+          testRunner: 'JUnit'
+          testResultsFiles: 'coverage/junit.xml'
+          platform: Windows
 
   - phase: Linux
     queue: Hosted Linux Preview
@@ -47,6 +53,12 @@ phases:
           Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
           yarn test:setup && yarn test
         name: Test
+      - task: PublishTestResults@2
+        displayName: Publish Test Results
+        inputs:
+          testRunner: 'JUnit'
+          testResultsFiles: 'coverage/junit.xml'
+          platform: Linux
 
   - phase: macOS
     queue: Hosted macOS Preview
@@ -66,3 +78,9 @@ phases:
       - script: |
           yarn test:setup && yarn test
         name: Test
+      - task: PublishTestResults@2
+        displayName: Publish Test Results
+        inputs:
+          testRunner: 'JUnit'
+          testResultsFiles: 'coverage/junit.xml'
+          platform: macOS
