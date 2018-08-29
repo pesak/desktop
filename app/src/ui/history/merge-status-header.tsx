@@ -21,10 +21,6 @@ export class MergeStatusHeader extends React.Component<
     const { status } = this.props
     const state = status === null ? 'loading' : status.kind
 
-    // TODO: mocks have a horizontal line wrapping this icon. I have no idea
-    // how to quickly insert this, or align it correctly, so this is me hoping
-    // someone with those mad skills can jump in here to help out
-
     return (
       <div className="merge-status-icon-container">
         <Octicon
