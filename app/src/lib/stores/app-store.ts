@@ -158,6 +158,7 @@ import {
 import { findAccountForRemoteURL } from '../find-account'
 import { inferLastPushForRepository } from '../infer-last-push-for-repository'
 import { MergeResultKind } from '../../models/merge'
+import { promiseWithMinimumTimeout } from '../promise'
 
 /**
  * Enum used by fetch to determine if
@@ -979,7 +980,10 @@ export class AppStore extends TypedBaseStore<IAppState> {
 
       this.updateOrSelectFirstCommit(repository, commitSHAs)
 
-      gitStore.detectMergeConflicts(action.branch).then(result => {
+      promiseWithMinimumTimeout(
+        () => gitStore.detectMergeConflicts(action.branch),
+        500
+      ).then(result => {
         if (result == null) {
           this.updateCompareState(repository, () => ({
             mergeStatus: null,
