@@ -146,7 +146,7 @@ describe('AppStore', () => {
       await appStore._undoCommit(repository, firstCommit!)
 
       state = getAppState(appStore)
-      expect(state.localCommitSHAs).to.be.empty
+      expect(state.localCommitSHAs).to.not.be.empty
     })
   })
 })
